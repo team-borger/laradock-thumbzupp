@@ -439,7 +439,8 @@ services:
         - "82:82"
         - "83:83"
         - "84:84"
-        - "85:85"
+        - "85:85" # port unusable :shrugs
+        - "86:86"
       depends_on:
         - php-fpm
       networks:

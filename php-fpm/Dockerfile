@@ -155,11 +155,12 @@ RUN if [ ${INSTALL_FAKETIME} = true ]; then \
 # SOAP:
 ###########################################################################
 
-ARG INSTALL_SOAP=false
+ARG INSTALL_SOAP=true
 
 RUN if [ ${INSTALL_SOAP} = true ]; then \
     # Install the soap extension
     rm /etc/apt/preferences.d/no-debian-php && \
+    apt-get update && \
     apt-get -y install libxml2-dev php-soap && \
     docker-php-ext-install soap \
 ;fi
