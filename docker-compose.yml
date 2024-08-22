@@ -436,11 +436,14 @@ services:
         - "${NGINX_HOST_HTTP_PORT}:80"
         - "${NGINX_HOST_HTTPS_PORT}:443"
         - "${VARNISH_BACKEND_PORT}:81"
-        - "82:82"
-        - "83:83"
-        - "84:84"
-        - "85:85" # port unusable :shrugs
-        - "86:86"
+        - "85:85" # tamsap
+        - "86:86" # codevwork / csenge
+        # - "87:87" # codevwork / cgwp
+        - "88:88" # dossims
+        - "92:92" # codevwork / simple-inventory-app
+        - "93:93" # codevwork / app-foundations
+        - "94:94" # private / php native test
+        - "96:96" # private / gcares-app
       depends_on:
         - php-fpm
       networks:
@@ -539,6 +542,7 @@ services:
 
 ### MySQL ################################################
     mysql:
+      restart: unless-stopped
       build:
         context: ./mysql
         args:
@@ -969,6 +973,7 @@ services:
 
 ### phpMyAdmin ###########################################
     phpmyadmin:
+      restart: unless-stopped
       build: ./phpmyadmin
       environment:
         - PMA_ARBITRARY=1
